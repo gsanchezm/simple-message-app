@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Saved</title>
+</head>
+<body>
+<h1>Message stored!</h1>
+
+<p>Your last message was: <strong th:text="${lastMessage}">example</strong></p>
+<p>Total messages in the system:
+    <strong th:text="${messageCount}">0</strong>
+</p>
+
+<p><a th:href="@{/}">Back to form</a></p>
+</body>
+</html>

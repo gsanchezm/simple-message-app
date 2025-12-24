@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Message App</title>
+</head>
+<body>
+<h1>Simple Message App</h1>
+
+<p>Messages stored: <span th:text="${messageCount}">0</span></p>
+
+<div th:if="${globalError}" th:text="${globalError}" style="color:red"></div>
+
+<form th:action="@{/messages}" th:object="${messageForm}" method="post">
+    <div>
+        <label for="text">Enter a message:</label>
+        <input type="text" id="text" th:field="*{text}" required/>
+
+        <!-- zona de errores para el campo text -->
+        <div th:if="${#fields.hasErrors('text')}"
+             th:errors="*{text}"
+             style="color: red;">
+            <!-- Aquí Thymeleaf inyecta el mensaje de error -->
+        </div>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>
